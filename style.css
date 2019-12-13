@@ -1,6 +1,8 @@
 /* THIS AFFECTS THE MOBILE NAVBAR */
 .mobile-nav-bar {
-    background-color: #1779ba;
+    /* background-color: #7d0070; */
+    /* background-color: #d984d0; */
+    background-color: black;
   }
   
 /* THIS AFFECTS ANCHOR TAGS IN THE MOBILE NAVBAR */
@@ -98,6 +100,7 @@
     -webkit-flex: 1 0 0;
         -ms-flex: 1 0 0px;
             flex: 1 0 0;
+    background-color: black;
   }
   
   .card-user-profile-button + .card-user-profile-button {
