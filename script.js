@@ -40,22 +40,22 @@ function loadWordQuestion() {
 }
 
 function captureUserInput(e) {
+    // If a keycode is detected and it is NOT the enter key
     if (e.keyCode && e.keyCode !== 13) {
+        // return out of the function as we're only looking for a keydown event that is enter
         return;
     }
     userResponses.push(wordInput.val().trim());
-    wordInput.val('');
     curIndex++;
+    clearQuestions();
     loadWordQuestion();
 }
 
 function captureButtonInput() {
-    if ($(this).matches('button')) {
-        userResponses.push($(this).val());
-        wordInput.val('');
-        curIndex++;
-        loadWordQuestion();
-    }
+    userResponses.push($(this).val());
+    curIndex++;
+    clearQuestions();
+    loadWordQuestion();
 }
 
 function endGame() {
@@ -65,13 +65,15 @@ function endGame() {
     renderStory();
 }
 
+function clearQuestions() {
+    wordInput.val('');
+    wordTypeContainer.empty();
+    suggestionContainer.empty();
+}
+
 function renderStory() {
     var storyHtml = "";
     for (var i = 0; i < sentences.length; i++) {
-
-        // sentences[i].substring('\n*','<br><br>');
-
-        // console.log(sentences[i]);
 
         if (sentences[i] !== "" && sentences[i] !== 0) {
 
@@ -92,4 +94,4 @@ function renderStory() {
 playBtn.on('click',startGame);
 suggestionContainer.on('click',captureButtonInput);
 userButton.on('click',captureUserInput);
-wordInput.on('keyup',captureUserInput);
+wordInput.on('keydown',captureUserInput);
