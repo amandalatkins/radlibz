@@ -40,22 +40,22 @@ function loadWordQuestion() {
 }
 
 function captureUserInput(e) {
+    // If a keycode is detected and it is NOT the enter key
     if (e.keyCode && e.keyCode !== 13) {
+        // return out of the function as we're only looking for a keydown event that is enter
         return;
     }
     userResponses.push(wordInput.val().trim());
-    wordInput.val('');
     curIndex++;
+    clearQuestions();
     loadWordQuestion();
 }
 
 function captureButtonInput() {
-    // if ($(this).matches('button')) {
-        userResponses.push($(this).val());
-        wordInput.val('');
-        curIndex++;
-        loadWordQuestion();
-    // }
+    userResponses.push($(this).val());
+    curIndex++;
+    clearQuestions();
+    loadWordQuestion();
 }
 
 function endGame() {
@@ -65,13 +65,15 @@ function endGame() {
     renderStory();
 }
 
+function clearQuestions() {
+    wordInput.val('');
+    wordTypeContainer.empty();
+    suggestionContainer.empty();
+}
+
 function renderStory() {
     var storyHtml = "";
     for (var i = 0; i < sentences.length; i++) {
-
-        // sentences[i].substring('\n*','<br><br>');
-
-        // console.log(sentences[i]);
 
         if (sentences[i] !== "" && sentences[i] !== 0) {
 
@@ -114,21 +116,29 @@ function getSynonyms(word) {
         url: mwBaseUrl + word + "?key="+mwApiKey,
         method: "GET"
     }).then(function(response) {
-        synonyms = response[0].meta.syns;
-        renderSuggestions();
+        console.log(response);
+        if (response) {
+            synonyms = response[0].meta.syns;
+            renderSuggestions();
+        }
     });
 }
 
 function setSuggestionDelay() {
     clearTimeout(suggestionDelay);
     suggestionDelay = setTimeout(function() {
-        getSynonyms(wordInput.val());
+        if (wordInput.val() === "") {
+            suggestionContainer.empty();
+        } else {
+            getSynonyms(wordInput.val());
+        }
     }, 1000);
 }
 
 function renderSuggestions() {
     // There are several arrays within the synonyms array. let's choose a random one, and then choose a random synonym within that array.
     // And do that three times
+
     suggestionContainer.empty();
     for (var i = 0; i < 3; i++) {
        var randIndex = Math.floor(Math.random() * synonyms.length);
@@ -136,7 +146,7 @@ function renderSuggestions() {
 
        var word = synonyms[randIndex][randSubIndex];
        
-       var newBtn = $('<button>').addClass(suggestionButtonClass);
+       var newBtn = $('<button>').addClass(suggestionButtonClass.replace('.',''));
        newBtn.val(word);
        newBtn.text(word);
        suggestionContainer.append(newBtn);
