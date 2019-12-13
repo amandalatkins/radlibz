@@ -5,6 +5,7 @@ var userButton = $('#userWord');
 var suggestionContainer = $('#wordSuggestion');
 var introScreen = $('#intro');
 var questionScreen = $('#question');
+var endGameScreen = $('#endGame');
 
 
 var madApi = "https://madlibz.herokuapp.com/api/random?minlength=5&maxlength=25";
@@ -42,7 +43,7 @@ function captureUserInput(e) {
     if (e.keyCode && e.keyCode !== 13) {
         return;
     }
-    userResponses.push(wordInput.val());
+    userResponses.push(wordInput.val().trim());
     wordInput.val('');
     curIndex++;
     loadWordQuestion();
@@ -58,10 +59,33 @@ function captureButtonInput() {
 }
 
 function endGame() {
-    console.log(blanks);
-    console.log(userResponses);
+    // console.log(blanks);
+    // console.log(userResponses);
     questionScreen.hide();
-    alert('game over');
+    renderStory();
+}
+
+function renderStory() {
+    var storyHtml = "";
+    for (var i = 0; i < sentences.length; i++) {
+
+        // sentences[i].substring('\n*','<br><br>');
+
+        // console.log(sentences[i]);
+
+        if (sentences[i] !== "" && sentences[i] !== 0) {
+
+            var sentence = sentences[i].replace('\n','<br><br>');
+            sentence = sentence.replace('*','&bull;');
+
+            storyHtml += sentence;
+            console.log(sentence);
+        }
+        if (userResponses[i]) {
+            storyHtml += "<span class='user-word'>"+userResponses[i]+"</span>";
+        }
+    }
+    endGameScreen.html(storyHtml);
 }
 
 // Event Listeners
