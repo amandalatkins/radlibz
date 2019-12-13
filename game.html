@@ -6,26 +6,26 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 
-    <style>.question { display: none }</style>
+    <style>#question { display: none }</style>
 
 </head>
 <body>
-
-    <button id="playBtn">Play</button>
-
-    <div class="question">
-        <input type="text" id="#wordInput"/>
-        <button class="userWord">Submit</button>
-        <div id="wordSuggestion">
-            
-        </div>
+    <div id="intro">
+        <button id="playBtn">Play</button>
     </div>
-    <h4 id="wordTypeContainer"></h4>
 
-    <script
-  src="https://code.jquery.com/jquery-3.4.1.min.js"
-  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-  crossorigin="anonymous"></script>
+    <div id="question">
+        <h4 id="wordTypeContainer"></h4>
+        <input type="text" id="wordInput"/>
+        <button id="userWord">Submit</button>
+        <div id="wordSuggestion"></div>  
+    </div>
+
+    <div id="endGame">
+        
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <script src="script.js"></script>
 </body>
 </html>
