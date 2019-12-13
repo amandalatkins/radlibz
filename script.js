@@ -50,12 +50,12 @@ function captureUserInput(e) {
 }
 
 function captureButtonInput() {
-    if ($(this).matches('button')) {
+    // if ($(this).matches('button')) {
         userResponses.push($(this).val());
         wordInput.val('');
         curIndex++;
         loadWordQuestion();
-    }
+    // }
 }
 
 function endGame() {
@@ -92,18 +92,53 @@ function renderStory() {
 playBtn.on('click',startGame);
 suggestionContainer.on('click',captureButtonInput);
 userButton.on('click',captureUserInput);
-wordInput.on('keyup',captureUserInput);
+wordInput.on('keydown',captureUserInput);
+
+wordInput.on('keyup',setSuggestionDelay);
 
 
-//**** THESAURUS SUGGESTION CODE
+
+// THESAURUS SUGGESTION CODE
 
 var mwApiKey = "de6eeece-778a-44b5-8d01-ceb552ac108d";
-
 var mwBaseUrl = "https://www.dictionaryapi.com/api/v3/references/thesaurus/json/";
+var word;
+var suggestionDelay;
+var synonyms;
+var suggestionButtonClass = '.suggestionButton';
 
-$.ajax({
-    url: mwBaseUrl + "run" + "?key="+mwApiKey,
-    method: "GET"
-}).then(function(response) {
-    console.log(response);
-});
+$(document).on('click',suggestionButtonClass,captureButtonInput);
+
+function getSynonyms(word) {
+    $.ajax({
+        url: mwBaseUrl + word + "?key="+mwApiKey,
+        method: "GET"
+    }).then(function(response) {
+        synonyms = response[0].meta.syns;
+        renderSuggestions();
+    });
+}
+
+function setSuggestionDelay() {
+    clearTimeout(suggestionDelay);
+    suggestionDelay = setTimeout(function() {
+        getSynonyms(wordInput.val());
+    }, 1000);
+}
+
+function renderSuggestions() {
+    // There are several arrays within the synonyms array. let's choose a random one, and then choose a random synonym within that array.
+    // And do that three times
+    suggestionContainer.empty();
+    for (var i = 0; i < 3; i++) {
+       var randIndex = Math.floor(Math.random() * synonyms.length);
+       var randSubIndex = Math.floor(Math.random() * synonyms[randIndex].length);
+
+       var word = synonyms[randIndex][randSubIndex];
+       
+       var newBtn = $('<button>').addClass(suggestionButtonClass);
+       newBtn.val(word);
+       newBtn.text(word);
+       suggestionContainer.append(newBtn);
+    }
+}
