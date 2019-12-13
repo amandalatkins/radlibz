@@ -93,3 +93,17 @@ playBtn.on('click',startGame);
 suggestionContainer.on('click',captureButtonInput);
 userButton.on('click',captureUserInput);
 wordInput.on('keyup',captureUserInput);
+
+
+//**** THESAURUS SUGGESTION CODE
+
+var mwApiKey = "de6eeece-778a-44b5-8d01-ceb552ac108d";
+
+var mwBaseUrl = "https://www.dictionaryapi.com/api/v3/references/thesaurus/json/";
+
+$.ajax({
+    url: mwBaseUrl + "run" + "?key="+mwApiKey,
+    method: "GET"
+}).then(function(response) {
+    console.log(response);
+});
