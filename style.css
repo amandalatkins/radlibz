@@ -111,9 +111,20 @@
     font-size: 0.875rem;
     letter-spacing: 1px;
     opacity: 0.8;
-
   }
   
+  
+    .button:hover{
+      background-color: red;
+    }
+
+    .button:focus {
+      font-weight: bold;
+    }
+
+
+
+
   
 
   
@@ -141,12 +152,17 @@
   }
   
   .pagination-pointed .current {
-    background: dodgerblue;
+    background: red;
+    /* color: black; */
+    border-style: solid;
+    border-color: black;
+    border-width: 1px;
+    font-weight: bold;
   }
-  
-  .pagination-pointed .current:hover {
-    background-color: #0077ea;
-  }
+/*   
+  .pagination-pointed-button:hover {
+    background-color: red;
+  } */
   
   .pagination-pointed .pagination-next a {
     border-radius: 4px 0 0 4px;
@@ -212,5 +228,15 @@
     border-radius: 0 5000px 5000px 0;
     font-size: 0.8rem;
   }
+
+  #small-icon {
+    height: 32px;
+  }
   
   
+
+
+
+  .social {
+    background-color: black;
+  }
