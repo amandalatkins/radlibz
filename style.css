@@ -9,7 +9,8 @@
 .mobile-nav-bar a {
     color: #fefefe;
   }
-  
+
+/* THIS REPRESENTS THE TITLE PAGE */
 .card-user-profile {
     position: relative;
     z-index: 0;
@@ -113,11 +114,11 @@
     opacity: 0.8;
   }
   
-  
+
+  /* THESE TURN BUTTONS RED WHEN HOVERED OVER AND BOLDS THE TEXT WHEN CLICKED */
     .button:hover{
       background-color: red;
     }
-
     .button:focus {
       font-weight: bold;
     }
@@ -127,7 +128,7 @@
 
   
 
-  
+/* THESE AFFECT THE NAVBUTTONS THAT APPEAR IN THE BOTTOM OF THE GAMEPLAY WINDOW */
 .pagination-pointed .pagination-pointed-button, .pagination-pointed .current, .pagination-pointed .pagination-previous {
     position: relative;
     display: inline-block;
@@ -159,10 +160,6 @@
     border-width: 1px;
     font-weight: bold;
   }
-/*   
-  .pagination-pointed-button:hover {
-    background-color: red;
-  } */
   
   .pagination-pointed .pagination-next a {
     border-radius: 4px 0 0 4px;
@@ -212,13 +209,7 @@
     transition: all 0.2s linear;
   }
   
-  
-
-
-
-
-
-  
+/* THIS AFFECTS THE STYLING OF THE INPUT FIELD FOR USER ANSWERS */
 .input-group-rounded .input-group-field {
     border-radius: 5000px 0 0 5000px;
     padding-left: 1rem;
@@ -229,14 +220,12 @@
     font-size: 0.8rem;
   }
 
+/* THIS DETERMINES THE HEIGHT OF THE SMALL ICON SO IT CAN FIT THE NAVBAR */
   #small-icon {
     height: 32px;
   }
-  
-  
 
-
-
+/* THIS CHANGES THE BACKGROUND OF THE SOCIAL MEDIA BUTTONS TO BLACK */
   .social {
     background-color: black;
   }
