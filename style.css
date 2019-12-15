@@ -33,7 +33,7 @@
     margin-bottom: 0;
   }
   
-  .card-user-profile:hover .card-user-profile-img {
+  .card-user-profile .card-user-profile-img {
     opacity: 1;
   }
   
@@ -113,19 +113,6 @@
     letter-spacing: 1px;
     opacity: 0.8;
   }
-  
-
-  /* THESE TURN BUTTONS RED WHEN HOVERED OVER AND BOLDS THE TEXT WHEN CLICKED */
-    .button:hover{
-      background-color: red;
-    }
-    .button:focus {
-      font-weight: bold;
-    }
-
-
-
-
   
 
 /* THESE AFFECT THE NAVBUTTONS THAT APPEAR IN THE BOTTOM OF THE GAMEPLAY WINDOW */
@@ -229,3 +216,26 @@
   .social {
     background-color: black;
   }
+
+
+/* THIS SETS THE SUBMIT BUTTON DURING GAMEPLAY TO BE 100% OF THE WIDTH OF THE VIEWPORT */
+  #userWord{
+    width: 100%;
+    padding: 16px
+  }
+
+  
+  /* THESE TURN BUTTONS RED WHEN HOVERED OVER AND BOLDS THE TEXT WHEN CLICKED */
+
+  .button {
+    background-color: black;
+  }
+  .button:hover{
+    background-color: red;
+    font-weight: bold;
+  }
+  
+  .button #userWord {
+    padding: 1rem;
+  }
+
