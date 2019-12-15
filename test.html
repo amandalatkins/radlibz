@@ -1,42 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Voice to Text</title>
 </head>
+
 <body>
 
-    <div class="container">
-      <h1>voice to Text</h1>
-     
-      <script type="text/javascript">
-      function playTextToVoice(voice)
-      var = queryURL = "https://code.responsivevoice.org/responsivevoice.js?" + voice + "key=Naly0A17"
-      
-      
-      </script>
-
-    <script src="https://code.responsivevoice.org/responsivevoice.js"></script>
-    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-    
+  <div class="container">
+    <h1>Voice to Text</h1>
     <textarea id="text" cols="45" rows="3">Hello world</textarea>
-    
-    <select id="voiceselection"></select> 
-    
-    <input 
-    onclick="responsiveVoice.speak($('#text').val(),$('#voiceselection').val());" 
-    type="button" 
-    value="Play" 
-    />
-    
+    <select id="voiceselection"></select>
+    <input onclick="speakText()" type="button" value="Play" />
 
-      <script src="https://code.responsivevoice.org/responsivevoice.js?key=Naly0A17">
-      
-      
-      </script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-      <script src= "voicegenerator.js"></script>
+
+    <script src="https://code.responsivevoice.org/responsivevoice.js?key=Naly0A17"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="voicegenerator.js"></script>
 </body>
+
 </html>
