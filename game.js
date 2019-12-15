@@ -1,11 +1,13 @@
 var playBtn = $('#playBtn');
 var wordTypeContainer = $('#wordTypeContainer');
 var wordInput = $('#wordInput');
-var userButton = $('#userWord');
+var userButton = $('#nextBtn');
 var suggestionContainer = $('#wordSuggestion');
 var introScreen = $('#intro');
 var questionScreen = $('#question');
 var endGameScreen = $('#endGame');
+
+var prevBtn = $('#prevBtn');
 
 
 var madApi = "https://madlibz.herokuapp.com/api/random?minlength=5&maxlength=25";
@@ -39,9 +41,14 @@ function startGame() {
 
 // Loads the suggested part of speech
 function loadWordQuestion() {
+    clearQuestions();
     // As long as we haven't entered all of the words, load the current word type for the user
     if (curIndex < blanks.length) {
         wordTypeContainer.text(blanks[curIndex]);
+        console.log(curIndex + ": "+ blanks[curIndex]);
+        if (userResponses[curIndex]) {
+            wordInput.val(userResponses[curIndex]);
+        }
     } else {
         // If our current index has reached the end of the blanks array, end the game
         endGame();
@@ -55,14 +62,18 @@ function captureUserInput(e) {
         // return out of the function as we're only looking for a keydown event that is enter
         return;
     }
-    // Push whatever is in the input field to the userResponses array
-    userResponses.push(wordInput.val().trim());
-    // Increase the current Index so we can load the next word blank
-    curIndex++;
-    // Clear the word blank, input, and thesaurus suggestions
-    clearQuestions();
-    //Load the next word blank
-    loadWordQuestion();
+
+    // Don't allow user to proceed if the input is blank
+    if (wordInput.val() !== "") {
+        // Push whatever is in the input field to the userResponses array
+        userResponses[curIndex] = wordInput.val().trim();
+        // Increase the current Index so we can load the next word blank
+        curIndex++;
+        // Clear the word blank, input, and thesaurus suggestions
+        clearQuestions();
+        //Load the next word blank
+        loadWordQuestion();
+    }
 }
 
 // Captures the word from a suggestion button that is clicked by the user
@@ -117,72 +128,25 @@ function renderStory() {
     endGameScreen.html(storyHtml);
 }
 
+//Cycles to the next or previous word blank
+function prevQuestion() {
+
+    // If the curIndex is not zero (no word blanks before the very first one)
+    if (curIndex !== 0) {
+        curIndex--;
+        loadWordQuestion();
+    }
+    // // If our type is next and the curIndex is less than the length of user responses, i.e. users can't cycle forward until they've filled out existing blanks
+    // else if (type === "next" && curIndex < userResponses.length) {
+    //     // curIndex++;
+    //     //Let's also use the next button as a submit button, so capture user input
+    //     captureUserInput();
+    // }
+}
+
 // Event Listeners
 playBtn.on('click',startGame);
 suggestionContainer.on('click',captureButtonInput);
 userButton.on('click',captureUserInput);
 wordInput.on('keydown',captureUserInput);
-
-wordInput.on('keyup',setSuggestionDelay);
-
-
-
-// THESAURUS SUGGESTIONS ===============================================================================================
-
-var mwApiKey = "de6eeece-778a-44b5-8d01-ceb552ac108d";
-var mwBaseUrl = "https://www.dictionaryapi.com/api/v3/references/thesaurus/json/";
-var word;
-var suggestionDelay;
-var synonyms;
-var suggestionButtonClass = '.suggestionButton';
-
-$(document).on('click',suggestionButtonClass,captureButtonInput);
-
-// Query the thesaurus api with word supplied from user
-function getSynonyms(userWord) {
-    $.ajax({
-        url: mwBaseUrl + userWord + "?key="+mwApiKey,
-        method: "GET"
-    }).then(function(response) {
-        console.log(response);
-        // If there's a response, parse the response for the synonyms and run the renderSuggestions function
-        if (response) {
-            synonyms = response[0].meta.syns;
-            renderSuggestions();
-        }
-    });
-}
-
-// This function is triggered on keyup of the user word input
-function setSuggestionDelay() {
-    // Clear existing timeout with each keyup
-    clearTimeout(suggestionDelay);
-
-    // After one second, run this function one time. Basically detect if a user has paused typing for one second, then show them suggestions.
-    suggestionDelay = setTimeout(function() {
-        // empty the current suggestions element and get new ones
-        suggestionContainer.empty();
-        getSynonyms(wordInput.val());
-    }, 1000);
-}
-
-// Renders suggestions as buttons on the DOM
-function renderSuggestions() {
-
-    // There are several arrays within the synonyms array. let's choose a random one, and then choose a random synonym within that array.
-    // Do that three times to get three random suggestions 
-    for (var i = 0; i < 3; i++) {
-        // Random indices and random subindices
-       var randIndex = Math.floor(Math.random() * synonyms.length);
-       var randSubIndex = Math.floor(Math.random() * synonyms[randIndex].length);
-        
-       // Parse the random synonym
-       var word = synonyms[randIndex][randSubIndex];
-       
-       // Create a button with the suggestion class and set it's value and text content to the random synonym. Append it to the DOM.
-       var newBtn = $('<button>').addClass(suggestionButtonClass.replace('.',''));
-       newBtn.val(word);
-       newBtn.text(word);
-       suggestionContainer.append(newBtn);
-    }
-}
+prevBtn.on('click',prevQuestion);
