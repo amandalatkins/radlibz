@@ -45,9 +45,12 @@ function loadWordQuestion() {
     // As long as we haven't entered all of the words, load the current word type for the user
     if (curIndex < blanks.length) {
         wordTypeContainer.text(blanks[curIndex]);
-        console.log(curIndex + ": "+ blanks[curIndex]);
+        // If there is something stored already in the userResponses array for this index
         if (userResponses[curIndex]) {
+            // Load it into the input
             wordInput.val(userResponses[curIndex]);
+            // And load some synonyms too
+            getSynonyms(userResponses[curIndex]);
         }
     } else {
         // If our current index has reached the end of the blanks array, end the game
@@ -79,7 +82,7 @@ function captureUserInput(e) {
 // Captures the word from a suggestion button that is clicked by the user
 function captureButtonInput() {
     // Add the value of the button to the userResponses array
-    userResponses.push($(this).val());
+    userResponses[curIndex] = $(this).val();
     // Move on to the next index, clear the play elements, load the next word blank
     curIndex++;
     clearQuestions();
@@ -99,6 +102,8 @@ function clearQuestions() {
     wordInput.val('');
     wordTypeContainer.empty();
     suggestionContainer.empty();
+    // prevents synonyms from being loaded if user is speeding through questions
+    clearTimeout(suggestionDelay);
 }
 
 // Takes the userResponses array and the sentences array and renders the story
