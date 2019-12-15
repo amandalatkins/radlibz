@@ -17,6 +17,10 @@
     <!-- END GAME SCREEN STYLING -->
     <style>#endGame { display: none } </style>
 
+    <!-- VOICE OPTION PROMPT STYLING -->
+    <style>#voicePrompt{ display: none } </style>
+
+
   </head>
   <body>
 
@@ -98,15 +102,41 @@
       <!-- END QUESTION DISPLAY -->
       </div>
 
+  <!-- VOICE OPTION PROMPT -->
+  <div id="voicePrompt">
+   <!-- COMPLETE PROMPT -->
+   <div class="card" style="width: 100%">
+    <div class="card-divider">
+      <h1>All Done!</h1>
+    </div>
+    <div class="card-section">
+      <p>You finished your story!</p>
+      <p>Pick a voice from the dropdown list below.</p>
+    </div>
+
+    <!-- ACCENTS DROPDOWN -->
+    <!-- NEEDLESS TO SAY, THIS DOESNT WORK YET. LOOK AT MARWAN'S JS TO ADD FUNCTIONALITY -->
+    <ul class="dropdown menu" data-dropdown-menu>
+      <li>
+        <a href="#">Select One</a>
+        <ul class="menu">
+          <li><a href="#">Item 1A</a></li>
+          <!-- ... -->
+        </ul>
+      </li>
+    </ul>
 
 
 
+  </div>
 
-
-
+  <!-- ACCENT SUBMIT -->
+  <div class="card-user-profile-actions">
+    <button id="letsHearIt" class="card-user-profile-button button">Lets Hear It!</button>
+  </div>
+  <!-- END VOICE OPTION PROMPT -->
+  </div>
   
-
-
 
   <!-- FINAL SCREEN -->
   <div id="endGame">

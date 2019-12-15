@@ -10,6 +10,12 @@ var endGameScreen = $('#endGame');
 // ADDED ANOTHER VARIABLE TO HELP FORMAT END GAME SCREEN BELOW
 var showStory = $("#showStory");
 
+// ADDED VARIABLE FOR VOICE OPTION PROMPT
+var voicePrompt =$("#voicePrompt");
+
+// ADDED VARIABLE FOR "LETS HEAR IT!" BUTTON
+var letsHearIt = $("#letsHearIt");
+
 
 var madApi = "https://madlibz.herokuapp.com/api/random?minlength=5&maxlength=25";
 
@@ -47,8 +53,16 @@ function loadWordQuestion() {
         wordTypeContainer.text(blanks[curIndex]);
     } else {
         // If our current index has reached the end of the blanks array, end the game
-        endGame();
+        // endGame();
+        // THIS WILL BE REPLACED BY SHOWVOICEPROMPT -IT
+        showVoicePrompt();
     }
+}
+
+// THIS FUNCTION DISPLAYS THE VOICE OPTION PROMPT BEFORE ENDING THE GAME
+function showVoicePrompt() {
+    questionScreen.hide();
+    voicePrompt.show();
 }
 
 // Captures typed user input if "search" button is clicked or enter is pressed
@@ -81,7 +95,9 @@ function captureButtonInput() {
 // Kicks off the end of the game
 function endGame() {
     // Hide the question screen
-    questionScreen.hide();
+    // questionScreen.hide();
+    // HIDE VOICE PROMPT SCREEN -IT
+    voicePrompt.hide();
     // SHOW THE ENDGAME SCREEN -ADDED BY IT
     endGameScreen.show();
     // Render the story
@@ -130,6 +146,9 @@ playBtn.on('click',startGame);
 suggestionContainer.on('click',captureButtonInput);
 userButton.on('click',captureUserInput);
 wordInput.on('keydown',captureUserInput);
+
+// THIS TAKES THE USER FROM THE VOICE PROMPT PAGE TO THE END GAME SCREEN
+letsHearIt.on("click", endGame)
 
 
 // FIGURE OUT HOW TO CHANGE BUTTON BACKGROUND COLOR BACK TO BLACK ON MOUSEUP
