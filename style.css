@@ -234,6 +234,9 @@
     background-color: red;
     font-weight: bold;
   }
+  .button:after {
+    background-color: black;
+  }
   
   .button #userWord {
     padding: 1rem;

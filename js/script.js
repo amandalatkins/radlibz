@@ -7,13 +7,13 @@ var introScreen = $('#intro');
 var questionScreen = $('#question');
 var endGameScreen = $('#endGame');
 
-// ADDED ANOTHER VARIABLE TO HELP FORMAT END GAME SCREEN BELOW
+// ADDED ANOTHER VARIABLE TO HELP FORMAT END GAME SCREEN BELOW - IT
 var showStory = $("#showStory");
 
-// ADDED VARIABLE FOR VOICE OPTION PROMPT
+// ADDED VARIABLE FOR VOICE OPTION PROMPT -IT
 var voicePrompt =$("#voicePrompt");
 
-// ADDED VARIABLE FOR "LETS HEAR IT!" BUTTON
+// ADDED VARIABLE FOR "LETS HEAR IT!" BUTTON -IT
 var letsHearIt = $("#letsHearIt");
 
 
@@ -98,7 +98,7 @@ function endGame() {
     // questionScreen.hide();
     // HIDE VOICE PROMPT SCREEN -IT
     voicePrompt.hide();
-    // SHOW THE ENDGAME SCREEN -ADDED BY IT
+    // SHOW THE ENDGAME SCREEN -IT
     endGameScreen.show();
     // Render the story
     renderStory();
@@ -147,7 +147,7 @@ suggestionContainer.on('click',captureButtonInput);
 userButton.on('click',captureUserInput);
 wordInput.on('keydown',captureUserInput);
 
-// THIS TAKES THE USER FROM THE VOICE PROMPT PAGE TO THE END GAME SCREEN
+// THIS TAKES THE USER FROM THE VOICE PROMPT PAGE TO THE END GAME SCREEN -IT
 letsHearIt.on("click", endGame)
 
 
