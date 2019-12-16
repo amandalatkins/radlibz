@@ -155,3 +155,11 @@ letsHearIt.on("click", endGame)
 // $("button").mouseup(function() {
 //   $(this).
 // });
+
+
+// This resets the button background-color to black on mouse up
+
+// $( "#target" ).mouseup(function() {
+//     $(this)
+//     alert( "Handler for .mouseup() called." );
+//   });
