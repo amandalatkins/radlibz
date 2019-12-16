@@ -9,6 +9,10 @@ var endGameScreen = $('#endGame');
 
 var prevBtn = $('#prevBtn');
 
+var showStory = $("#showStory");
+var voicePrompt =$("#voicePrompt");
+var letsHearIt = $("#letsHearIt");
+
 
 var madApi = "https://madlibz.herokuapp.com/api/random?minlength=5&maxlength=25";
 
@@ -57,7 +61,9 @@ function loadWordQuestion() {
         console.log(userResponses);
     } else {
         // If our current index has reached the end of the blanks array, end the game
-        endGame();
+        // endGame();
+        // THIS WILL BE REPLACED BY SHOWVOICEPROMPT -IT
+        showVoicePrompt();
     }
 }
 
@@ -89,10 +95,20 @@ function captureButtonInput() {
     loadWordQuestion();
 }
 
+// THIS FUNCTION DISPLAYS THE VOICE OPTION PROMPT BEFORE ENDING THE GAME
+function showVoicePrompt() {
+    questionScreen.hide();
+    voicePrompt.show();
+}
+
 // Kicks off the end of the game
 function endGame() {
-    // HIde the question screen
-    questionScreen.hide();
+    // Hide the question screen
+    // questionScreen.hide();
+    // HIDE VOICE PROMPT SCREEN -IT
+    voicePrompt.hide();
+    // SHOW THE ENDGAME SCREEN -IT
+    endGameScreen.show();
     // Render the story
     renderStory();
 }
@@ -130,7 +146,8 @@ function renderStory() {
         }
     }
     // append the story to the DOM
-    endGameScreen.html(storyHtml);
+    // I CHANGED THIS FROM ENDGAMESCREEN TO SHOW STORY SO THAT ENDGAMESCREEN COULD BE APPLIED TO THE ENCOMPASING DIV, ALLOWING ME TO HIDE IT UNTIL THE ENDGAME FUNCTION IS RUN 
+    showStory.html(storyHtml);
 }
 
 //Cycles to the next or previous word blank
@@ -156,6 +173,9 @@ userButton.on('click',captureUserInput);
 wordInput.on('keydown',captureUserInput);
 prevBtn.on('click',prevQuestion);
 
+
+// THIS TAKES THE USER FROM THE VOICE PROMPT PAGE TO THE END GAME SCREEN -IT
+letsHearIt.on("click", endGame);
 
 // THESAURUS SUGGESTIONS ===============================================================================================
 suggestionContainer.on('click',captureButtonInput);
