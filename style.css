@@ -227,7 +227,7 @@
   
   /* THESE TURN BUTTONS RED WHEN HOVERED OVER AND BOLDS THE TEXT WHEN CLICKED */
 
-  .button {
+  .button, .button:focus {
     background-color: black;
   }
   .button:hover{

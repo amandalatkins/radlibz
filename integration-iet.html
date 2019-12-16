@@ -6,9 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>RADLIBZ</title>
     <!-- FOUNDATION CSS LINK -->
-    <link rel="stylesheet" href="css/foundation.css"/>
+    <link rel="stylesheet" href="css/foundation.min.css"/>
     <!-- OUR CSS LINK -->
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="amanda.css">
 
 
     <!-- QUESTION DISPLAY STYLINGS -->
@@ -90,15 +91,21 @@
               <h1 id="wordTypeContainer"></h1>
               <br>
               <!-- DISPLAY USER SUBMISSION AS TYPED HERE -->
-              <h1>"_________________"</h1>
+              <h1>"<input type="text" id="wordInput"/>"</h1>
+              <div id="wordSuggestion"></div>
             </div>
           </div>
         </div>        
         <!-- INPUT FIELD -->
         <!-- from Amanda's game.JS -->
-        <input type="text" id="wordInput"/>    
-          <button class="button" id="userWord">Submit</button>
-        <div id="wordSuggestion"></div>
+          
+          <!-- <button class="button" id="userWord">Submit</button> -->
+          <ul class="pagination-pointed pagination text-center" role="navigation" aria-label="Pagination">
+            <li class="pagination-previous disabled" id="prevBtn">Prev<span class="show-for-sr">page</span></li>
+            <li id="counter"></li>
+            <li class="pagination-next"><a class="pagination-pointed-button" href="#" aria-label="Next page" id="nextBtn">Next <span class="show-for-sr">page</span></a></li>
+          </ul>
+        
       <!-- END QUESTION DISPLAY -->
       </div>
 
