@@ -21,6 +21,9 @@ var userResponses = [];
 // Set the current index for the blanks array to 0
 var curIndex = 0;
 
+
+// INGAME FUNCTIONS ==============================================================
+
 // This function starts the game by hiding the intro screen, showing the question screen, and then querying the MadLibz API
 function startGame() {
     introScreen.hide();
@@ -39,7 +42,6 @@ function startGame() {
         loadWordQuestion();
     });
 };
-
 // Loads the suggested part of speech
 function loadWordQuestion() {
     clearQuestions();
@@ -61,7 +63,6 @@ function loadWordQuestion() {
         showVoicePrompt();
     }
 }
-
 // Captures typed user input if "search" button is clicked or enter is pressed
 function captureUserInput(e) {
     // If a keycode is detected (we can assume this function was triggered by a keydown) and it is NOT the enter key
@@ -69,7 +70,6 @@ function captureUserInput(e) {
         // return out of the function as we're only looking for a keydown event that is enter
         return;
     }
-
     // Don't allow user to proceed if the input is blank
     if (wordInput.val() !== "") {
         // Push whatever is in the input field to the userResponses array
@@ -80,7 +80,6 @@ function captureUserInput(e) {
         loadWordQuestion();
     }
 }
-
 // Captures the word from a suggestion button that is clicked by the user
 function captureButtonInput() {
     // Add the value of the button to the userResponses array
@@ -89,7 +88,6 @@ function captureButtonInput() {
     curIndex++;
     loadWordQuestion();
 }
-
 // Displays the voice-select prompt after the last question is completed.
 function showVoicePrompt() {
     questionScreen.hide();
@@ -98,6 +96,7 @@ function showVoicePrompt() {
 
 // Kicks off the end of the game
 function endGame() {
+    
     // Hide the voice-prompt
     voicePrompt.hide();
     // Show the endgame screen
@@ -105,7 +104,6 @@ function endGame() {
     // Render the story
     renderStory();
 }
-
 // Resets the playing fields in prep for loading a new word blank
 function clearQuestions() {
     wordInput.val('');
@@ -114,7 +112,6 @@ function clearQuestions() {
     // prevents synonyms from being loaded if user is speeding through questions
     clearTimeout(suggestionDelay);
 }
-
 // Takes the userResponses array and the sentences array and renders the story
 function renderStory() {
     // Create an empty string variable to concatenate onto as we run through our arrays
@@ -140,28 +137,32 @@ function renderStory() {
     // append the story to the DOM
     // I CHANGED THIS FROM ENDGAMESCREEN TO SHOW STORY SO THAT ENDGAMESCREEN COULD BE APPLIED TO THE ENCOMPASING DIV, ALLOWING ME TO HIDE IT UNTIL THE ENDGAME FUNCTION IS RUN 
     showStory.html(storyHtml);
+    speakText(showStory);
 }
 
 // Text-to-Speech ===============================================================
-// function speakText() {
-//     // Get text from textbox.
-//     var text = $('#showStory').val();
-//     // Get selected voice from dropdown
-//     var voice = $('#voiceselection').val()
-//     // Speak it
-//     responsiveVoice.speak(text, voice)
-// }
+function speakText() {
+    // Get text from textbox.
+    var text = $('#showStory').text();
+    // Get selected voice from dropdown
+    var voice = $('#voiceselection').val()
+    // Speak it
+    responsiveVoice.speak(text, voice)
+}
 
 // The rest of this runs when the page opens
-// Get list of voices
 
-// var voicelist = responsiveVoice.getVoices();
-// // Get voice selection drop down
-// var vselect = $("#voiceselection");
-// // Add an option for each voice to the drop down
-// $.each(voicelist, function() {
-//     vselect.append($("<option/>").val(this.name).text(this.name));
-// });
+
+// Get voice selection drop down
+var vselect = $("#voiceselection");
+
+// Get list of voices
+var voicelist = responsiveVoice.getVoices();
+// Add an option for each voice to the drop down
+$.each(voicelist, function() {
+    vselect.append($("<option>").val(this.name).text(this.name));
+});
+
 
 
 //Cycles to the next or previous word blank

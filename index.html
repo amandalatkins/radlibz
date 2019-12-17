@@ -8,8 +8,8 @@
     <!-- FOUNDATION CSS LINK -->
     <link rel="stylesheet" href="css/foundation.min.css"/>
     <!-- OUR CSS LINK -->
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="amanda.css">
+    <link rel="stylesheet" href="css/style.css">
+    <!-- <link rel="stylesheet" href="amanda.css"> -->
 
 
     <!-- QUESTION DISPLAY STYLINGS -->
@@ -114,90 +114,61 @@
       <!-- END QUESTION DISPLAY -->
       </div>
 
-  <!-- VOICE OPTION PROMPT -->
-  <div id="voicePrompt" class="grid-container">
-    <!-- COMPLETE PROMPT -->
-    <div class="card" style="width: 100%">
-      <div class="card-divider">
-        <h1>All Done!</h1>
+      <!-- VOICE OPTION PROMPT -->
+      <div id="voicePrompt" class="grid-container">
+        <!-- COMPLETE PROMPT -->
+        <div class="card" style="width: 100%">
+          <div class="card-divider">
+            <h1>All Done!</h1>
+          </div>
+          <div class="card-section">
+            <p>You finished your story!</p>
+            <p>Pick a voice from the dropdown list below.</p>
+          </div>
+          <!-- ACCENT SUBMIT -->
+          <div class="card-user-profile-actions">
+            <select id="voiceselection"></select>
+            <input type="button" value="Let's Hear It!" id="letsHearIt" class="card-user-profile-button button"/>
+          </div>
+        <!-- END COMPLETE PROMPT -->
+        </div>    
+      <!-- END VOICE OPTION PROMPT -->
       </div>
-      <div class="card-section">
-        <p>You finished your story!</p>
-        <p>Pick a voice from the dropdown list below.</p>
-      </div>
-      <!-- ACCENT SUBMIT -->
-      <div class="card-user-profile-actions">
-        <select id="voiceselection"></select>
-        <input onclick="speakText()" type="button" value="Play" />
-        <button id="letsHearIt" class="card-user-profile-button button">Lets Hear It!</button>
-      </div>
-    <!-- END COMPLETE PROMPT -->
-    </div>    
-  <!-- END VOICE OPTION PROMPT -->
-  </div>
   
 
-  <!-- FINAL SCREEN -->
-  <div id="endGame" class="grid-container">
-    <!-- COMPLETED STORY -->
-    <div class="card" style="width: 100%">
-      <div class="card-divider">
-        <h1 id="storyTitle"></h1>
+      <!-- FINAL SCREEN -->
+      <div id="endGame" class="grid-container">
+        <!-- COMPLETED STORY -->
+        <div class="card" style="width: 100%">
+          <div class="card-divider">
+            <h1 id="storyTitle"></h1>
+          </div>
+          <div id="showStory" class="card-section">
+          </div>
+        <!-- END COMPLETED STORY -->
+        </div>
+
+        <!-- SOCIAL MEDIA BUTTONS -->
+        <h4 class="text-center">Share your story with friends!</h4>
+          <div class="clearfix"></div>
+          <div class="text-center">
+            <button type="button" class="button social facebook">
+              <i class="fa fa-facebook" aria-hidden="true"></i> Facebook 
+            </button>
+            <button type="button" class="button social twitter ">
+              <i class="fa fa-twitter" aria-hidden="true"></i> Twitter 
+            </button>
+            <button type="button" class="button social linkedin">
+              <i class="fa fa-linkedin" aria-hidden="true"></i> Linkedin 
+            </button>    
+            <button type="button" class="button social instagram">
+              <i class="fa fa-instagram" aria-hidden="true"></i> Instagram 
+            </button>
+          </div>
+          <div class="clearfix"></div>
+
+      <!-- END FINAL SCREEN -->
       </div>
-      <div id="showStory" class="card-section">
-      </div>
-    <!-- END COMPLETED STORY -->
-    </div>
-
-    <!-- SOCIAL MEDIA BUTTONS -->
-    <h4 class="text-center">Share your story with friends!</h4>
-      <div class="clearfix"></div>
-      <div class="text-center">
-        <button type="button" class="button social facebook">
-          <i class="fa fa-facebook" aria-hidden="true"></i> Facebook 
-        </button>
-        <button type="button" class="button social twitter ">
-          <i class="fa fa-twitter" aria-hidden="true"></i> Twitter 
-        </button>
-        <button type="button" class="button social linkedin">
-          <i class="fa fa-linkedin" aria-hidden="true"></i> Linkedin 
-        </button>    
-        <button type="button" class="button social instagram">
-          <i class="fa fa-instagram" aria-hidden="true"></i> Instagram 
-        </button>
-      </div>
-      <div class="clearfix"></div>
-
-  <!-- END FINAL SCREEN -->
-  </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
       
     <!-- Foundation JS -->
     <script src="js/vendor/jquery.js"></script>
@@ -206,6 +177,8 @@
     <script>$(document).foundation();</script>
     <!-- jQuery CDN -->
     <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <!-- Test to Speech JS Library -->
+    <script src="https://code.responsivevoice.org/responsivevoice.js?key=Naly0A17"></script>
     <!-- Our JS -->
     <script src="js/script.js"></script>
   </body>
