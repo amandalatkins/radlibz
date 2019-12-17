@@ -87,6 +87,7 @@ function captureUserInput(e) {
 }
 // Captures the word from a suggestion button that is clicked by the user
 function captureButtonInput() {
+    console.log('capture button input');
     // Add the value of the button to the userResponses array
     userResponses[curIndex] = $(this).val();
     // Move on to the next index, clear the play elements, load the next word blank
@@ -183,7 +184,6 @@ function prevQuestion() {
 
 // Event Listeners
 playBtn.on('click',startGame);
-suggestionContainer.on('click',captureButtonInput);
 userButton.on('click',captureUserInput);
 wordInput.on('keydown',captureUserInput);
 prevBtn.on('click',prevQuestion);
@@ -193,7 +193,6 @@ prevBtn.on('click',prevQuestion);
 letsHearIt.on("click", endGame);
 
 // THESAURUS SUGGESTIONS ===============================================================================================
-suggestionContainer.on('click',captureButtonInput);
 wordInput.on('keyup',setSuggestionDelay);
 
 var mwApiKey = "de6eeece-778a-44b5-8d01-ceb552ac108d";
@@ -250,7 +249,7 @@ function renderSuggestions() {
         // Parse the random synonym
         var word = synonyms[randIndex][randSubIndex];
 
-        // To avoid duplicates, make sure the word isn't already in our suggestionArray. Add if it isn't.
+        // To avoid duplicates, make sure the word isn't already in our suggestionArray. Add if it isn't, add it.
         if (suggestionArray.indexOf(word) === -1) {
             suggestionArray.push(word);
         }
