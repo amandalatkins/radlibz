@@ -6,13 +6,10 @@ var suggestionContainer = $('#wordSuggestion');
 var introScreen = $('#intro');
 var questionScreen = $('#question');
 var endGameScreen = $('#endGame');
-
 var prevBtn = $('#prevBtn');
-
 var showStory = $("#showStory");
 var voicePrompt =$("#voicePrompt");
 var letsHearIt = $("#letsHearIt");
-
 
 var madApi = "https://madlibz.herokuapp.com/api/random?minlength=5&maxlength=25";
 
@@ -60,9 +57,7 @@ function loadWordQuestion() {
         console.log(curIndex);
         console.log(userResponses);
     } else {
-        // If our current index has reached the end of the blanks array, end the game
-        // endGame();
-        // THIS WILL BE REPLACED BY SHOWVOICEPROMPT -IT
+        // If our current index has reached the end of the blanks array, show the voice-select prompt
         showVoicePrompt();
     }
 }
@@ -95,7 +90,7 @@ function captureButtonInput() {
     loadWordQuestion();
 }
 
-// THIS FUNCTION DISPLAYS THE VOICE OPTION PROMPT BEFORE ENDING THE GAME
+// Displays the voice-select prompt after the last question is completed.
 function showVoicePrompt() {
     questionScreen.hide();
     voicePrompt.show();
@@ -103,11 +98,9 @@ function showVoicePrompt() {
 
 // Kicks off the end of the game
 function endGame() {
-    // Hide the question screen
-    // questionScreen.hide();
-    // HIDE VOICE PROMPT SCREEN -IT
+    // Hide the voice-prompt
     voicePrompt.hide();
-    // SHOW THE ENDGAME SCREEN -IT
+    // Show the endgame screen
     endGameScreen.show();
     // Render the story
     renderStory();
@@ -126,17 +119,16 @@ function clearQuestions() {
 function renderStory() {
     // Create an empty string variable to concatenate onto as we run through our arrays
     var storyHtml = "";
+    // Displays the title of the story
+    $("#storyTitle").text(title);
     // Loop through all the sentences
     for (var i = 0; i < sentences.length; i++) {
         // As long as the sentences have content and aren't set to 0 (the api returns one 0)
         if (sentences[i] !== "" && sentences[i] !== 0) {
-
             // Replace this chracter combo with line breaks
             var sentence = sentences[i].replace('\n','<br><br>');
-
             // Replace this character with bullet point
             sentence = sentence.replace('*','&bull;');
-
             // add sentence to story
             storyHtml += sentence;
         }
@@ -150,9 +142,30 @@ function renderStory() {
     showStory.html(storyHtml);
 }
 
+// Text-to-Speech ===============================================================
+// function speakText() {
+//     // Get text from textbox.
+//     var text = $('#showStory').val();
+//     // Get selected voice from dropdown
+//     var voice = $('#voiceselection').val()
+//     // Speak it
+//     responsiveVoice.speak(text, voice)
+// }
+
+// The rest of this runs when the page opens
+// Get list of voices
+
+// var voicelist = responsiveVoice.getVoices();
+// // Get voice selection drop down
+// var vselect = $("#voiceselection");
+// // Add an option for each voice to the drop down
+// $.each(voicelist, function() {
+//     vselect.append($("<option/>").val(this.name).text(this.name));
+// });
+
+
 //Cycles to the next or previous word blank
 function prevQuestion() {
-
     // If the curIndex is not zero (no word blanks before the very first one)
     if (curIndex !== 0) {
         curIndex--;

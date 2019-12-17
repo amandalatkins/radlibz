@@ -1,3 +1,11 @@
+/* body {
+  font-size: 28px;
+} */
+
+.button {
+  font-size: 32px;
+}
+
 /* THIS AFFECTS THE MOBILE NAVBAR */
 .mobile-nav-bar {
     /* background-color: #7d0070; */
@@ -109,11 +117,21 @@
   }
   
   .card-user-profile-info {
-    font-size: 0.875rem;
+    font-size: 18px;
     letter-spacing: 1px;
     opacity: 0.8;
   }
-  
+
+  .option {
+    font-size: 18px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+  }
+
+  .fieldset {
+    margin-top: 0px;
+    margin-bottom: 0px;
+  }
 
 /* THESE AFFECT THE NAVBUTTONS THAT APPEAR IN THE BOTTOM OF THE GAMEPLAY WINDOW */
 .pagination-pointed .pagination-pointed-button, .pagination-pointed .current, .pagination-pointed .pagination-previous {
@@ -227,15 +245,119 @@
   
   /* THESE TURN BUTTONS RED WHEN HOVERED OVER AND BOLDS THE TEXT WHEN CLICKED */
 
-  .button, .button:focus {
+  .button {
     background-color: black;
   }
+/* 
+  .button:visited {
+    background-color: black;
+  } */
+
   .button:hover{
     background-color: red;
     font-weight: bold;
   }
+
+
+  .button .button:active {
+    background-color: black;
+  }
+  
+/* 
+  .button:focus {
+    background-color: black;
+  } */
   
   .button #userWord {
     padding: 1rem;
   }
 
+
+/* 
+  @media screen (min-width:992px) {
+    .card-user-profile-img {
+      height: 100px;
+    }
+  } */
+
+
+  /* desktop (DEFAULT)*/
+  .columns {
+    width: 50%;
+    float: left;
+  }
+  .card-user-profile-info {
+    font-size: 30px;
+  }
+  .option {
+    font-size: 26px;
+  }
+  .card-section {
+    font-size: 30px;
+  }
+  .social {
+    font-size: 30px;
+    width: 23%;
+    float: left;
+    margin: .7rem;
+  }
+  h4 {
+    font-weight: bold;
+    font-size: 30px;
+  }
+  legend {
+    font-weight: bold;
+  }
+
+  /* tablet */
+  @media screen and (max-width: 768px) {
+    .columns {
+      width: 50%;
+      float: left;
+    }
+    .card-user-profile-info {
+      font-size: 26px;
+    }
+    .option {
+      font-size: 26px;
+    }
+    .card-section {
+      font-size: 26px;
+    }
+    .social {
+      font-size: 26px;
+      width: 23%;
+      float: left;
+      margin: .45rem;
+    }
+    h4 {
+      font-size: 26px;
+    }
+  }
+
+  /* phone */
+  @media screen and (max-width: 375px) {
+    .columns {
+      width: 100%;
+    }
+    .card-user-profile-info {
+      font-size: 18px;
+    }
+    .option {
+      font-size: 18px;
+    }
+    .card-section {
+      font-size: 18px;
+    }
+
+    .social {
+      font-size: 18px;
+      width: 45%;
+      float: left;
+      margin: .5rem;
+    }
+
+    h4 {
+      font-size: 18px;
+    }
+  }

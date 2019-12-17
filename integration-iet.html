@@ -39,7 +39,7 @@
     </div>
 
       <!-- INTRO SCREEN -->
-      <div id="intro">
+      <div id="intro" class="grid-container">
         <div class="card-user-profile">
           <!-- PAGE HEADER -->
           <img class="card-user-profile-img" src="assets/RadLibz-yellow-back.png" alt="RadLibz Logo with a Yellow Background" />
@@ -57,10 +57,15 @@
           <!-- OPTION SELECT -->
           <div>
             <fieldset class="fieldset">
-              <legend>Options:</legend>
-              <input id="checkbox12" type="checkbox"><label for="checkbox12">Enable Accessability</label>
-              <br>
-              <input id="checkbox22" type="checkbox"><label for="checkbox22">Read me a Story! (random completion)</label>
+              <legend class="option">Options:</legend>
+              <div class="row">
+                <div class="columns small-12">
+                  <input id="checkbox12" type="checkbox"><label for="checkbox12" class="option">Enable Accessability</label>
+                </div>
+                <div class="columns small-12">
+                  <input id="checkbox22" type="checkbox"><label for="checkbox22" class="option">Read me a Story!</label>                  
+                </div>
+              </div>
             </fieldset>
           <!-- END OPTION SELECT -->
           </div>
@@ -73,7 +78,7 @@
       </div>
 
       <!-- QUESTION DISPLAY -->
-      <div id="question">
+      <div id="question" class="gird-container">
         <!-- PROGRESS METER -->
         <div class="alert progress">
           <!-- THIS DISPLAY IS A PLACEHOLDER -->
@@ -90,7 +95,7 @@
               <br>        
               <h1 id="wordTypeContainer"></h1>
               <br>
-              <!-- DISPLAY USER SUBMISSION AS TYPED HERE -->
+              <!-- Displays user submission as typed here -->
               <h1>"<input type="text" id="wordInput"/>"</h1>
               <div id="wordSuggestion"></div>
             </div>
@@ -110,43 +115,30 @@
       </div>
 
   <!-- VOICE OPTION PROMPT -->
-  <div id="voicePrompt">
-   <!-- COMPLETE PROMPT -->
-   <div class="card" style="width: 100%">
-    <div class="card-divider">
-      <h1>All Done!</h1>
-    </div>
-    <div class="card-section">
-      <p>You finished your story!</p>
-      <p>Pick a voice from the dropdown list below.</p>
-    </div>
-
-    <!-- ACCENTS DROPDOWN -->
-    <!-- NEEDLESS TO SAY, THIS DOESNT WORK YET. LOOK AT MARWAN'S JS TO ADD FUNCTIONALITY -->
-    <ul class="dropdown menu" data-dropdown-menu>
-      <li>
-        <a href="#">Select One</a>
-        <ul class="menu">
-          <li><a href="#">Item 1A</a></li>
-          <!-- ... -->
-        </ul>
-      </li>
-    </ul>
-
-
-
-  </div>
-
-  <!-- ACCENT SUBMIT -->
-  <div class="card-user-profile-actions">
-    <button id="letsHearIt" class="card-user-profile-button button">Lets Hear It!</button>
-  </div>
+  <div id="voicePrompt" class="grid-container">
+    <!-- COMPLETE PROMPT -->
+    <div class="card" style="width: 100%">
+      <div class="card-divider">
+        <h1>All Done!</h1>
+      </div>
+      <div class="card-section">
+        <p>You finished your story!</p>
+        <p>Pick a voice from the dropdown list below.</p>
+      </div>
+      <!-- ACCENT SUBMIT -->
+      <div class="card-user-profile-actions">
+        <select id="voiceselection"></select>
+        <input onclick="speakText()" type="button" value="Play" />
+        <button id="letsHearIt" class="card-user-profile-button button">Lets Hear It!</button>
+      </div>
+    <!-- END COMPLETE PROMPT -->
+    </div>    
   <!-- END VOICE OPTION PROMPT -->
   </div>
   
 
   <!-- FINAL SCREEN -->
-  <div id="endGame">
+  <div id="endGame" class="grid-container">
     <!-- COMPLETED STORY -->
     <div class="card" style="width: 100%">
       <div class="card-divider">
