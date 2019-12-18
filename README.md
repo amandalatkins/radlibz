@@ -39,17 +39,16 @@ Open ``index.html`` in your preferred web browser
 
 * [See Live App](https://amandalatkins.github.io/project-one)
 
-## Screenshots
+## Game Flow Screenshots
 
-![Desktop View](assets/images/desktop.jpg)
-![Mobile View](assets/images/mobile.jpg)
+![Game Flow](assets/screenshot.jpg)
 
 ## Code Snippets
 
 This code snippet shows the function that integrates the player's responses with the story sentences
 
 ```
-// Takes the userResponses array and the sentences array and renders the story
+// Takes the userResponses array and the sentences array (from the MabLibz API return object) and renders the story
 function renderStory() {
     // Create an empty string variable to concatenate onto as we run through our arrays
     var storyHtml = "";
@@ -92,24 +91,27 @@ function speakText() {
 ## Authors
 
 * ### Amanda Atkins
-    - [Portfolio](https://digitalrainstorm.com)
     - [Github](https://github.com/amandalatkins)
     - [LinkedIn](https://www.linkedin.com/in/amandalatkins)
 
 * ### Ian Toy
-* ### Marwan Jassim
+    - [Github](https://github.com/ietoy)
+    - [LinkedIn](https://www.linkedin.com/in/ian-toy-265077196/)
 
-See also the list of [contributors](https://github.com/amandalatkins/weather-dashboard/contributors) who participated in this project.
+* ### Marwan Jassim
+    - [Github](https://github.com/marwanjassim)
+    - [LinkedIn](https://www.linkedin.com/in/marwan-jassim-b3001878/)
+
+See also the list of [contributors](https://github.com/amandalatkins/radlibz/contributors) who participated in this project.
 
 ## License
 
 This project is licensed under the MIT License.
 
-Search icon and current location icon are licensed under [Font Awesome's Free License](https://fontawesome.com/license/free).
+[MadLibz API](https://github.com/HermanFassett/madlibz/blob/master/LICENSE) data is licened under the MIT License.
 
-Weather data from [OpenWeatherMap.org](https://openweathermap.org/terms) is licensed under the [Creative Commons Attribution-ShareAlike 4.0 Generic License](https://creativecommons.org/licenses/by-sa/4.0/) license
-
-All photos licensed through [Teleport.org](https://developers.teleport.org/api/getting_started/#photos_ua) with Creative Commons licenses.
+[Merriam-Webster's Collegiate Thesaurus](https://dictionaryapi.com/info/terms-of-service) data is licensed according to their terms of service.
 
 ## Acknowledgments
 
+Thanks to [TailorBrands](https://www.tailorbrands.com/) for assisting with the RadLibz logo. Special thanks to our instructor Jerome and TAs Mahisha and Kerwin for their ideas and guidance.
