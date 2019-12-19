@@ -14,13 +14,13 @@ Radlibz is an interactive, single-player game of MadLibs! No friends necessary! 
 Copy the repository link.
 
 ```
-https://github.com/amandalatkins/project-one.git
+https://github.com/amandalatkins/radlibz.git
 ```
 
 Clone the repository to your local development environment
 
 ```
-git clone https://github.com/amandalatkins/project-one.git
+git clone https://github.com/amandalatkins/radlibz.git
 ```
 
 Open ``index.html`` in your preferred web browser
@@ -37,7 +37,7 @@ Open ``index.html`` in your preferred web browser
 
 ## Deployed Link
 
-* [See Live App](https://amandalatkins.github.io/project-one)
+* [See Live App](https://amandalatkins.github.io/radlibz)
 
 ## Game Flow Screenshots
 
@@ -111,6 +111,8 @@ This project is licensed under the MIT License.
 [MadLibz API](https://github.com/HermanFassett/madlibz/blob/master/LICENSE) data is licened under the MIT License.
 
 [Merriam-Webster's Collegiate Thesaurus](https://dictionaryapi.com/info/terms-of-service) data is licensed according to their terms of service.
+
+[ResponsiveVoice-NonCommercial](https://responsivevoice.org) licensed under [![ResponsiveVoice Text to Speech](https://responsivevoice.org/wp-content/uploads/2014/08/95x15.png)](https://creativecommons.org/licenses/by-nc-nd/4.0/)
 
 ## Acknowledgments
 
